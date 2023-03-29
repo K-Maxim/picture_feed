@@ -1,0 +1,556 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/picture/": {
+      "get": {
+        "tags": [
+          "picture"
+        ],
+        "summary": "Root",
+        "operationId": "root_picture__get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "name": "offset",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "picture"
+        ],
+        "summary": "Upload Or Update File",
+        "operationId": "upload_or_update_file_picture__post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Pk",
+              "type": "integer"
+            },
+            "name": "pk",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Title",
+              "type": "string"
+            },
+            "name": "title",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "User",
+              "type": "string"
+            },
+            "name": "user",
+            "in": "query"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_upload_or_update_file_picture__post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/picture/{pk}": {
+      "get": {
+        "tags": [
+          "picture"
+        ],
+        "summary": "Download File",
+        "operationId": "download_file_picture__pk__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Pk",
+              "type": "integer"
+            },
+            "name": "pk",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "picture"
+        ],
+        "summary": "Delete File",
+        "operationId": "delete_file_picture__pk__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Pk",
+              "type": "integer"
+            },
+            "name": "pk",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/picture/{picture_id}/comment": {
+      "get": {
+        "tags": [
+          "comment"
+        ],
+        "summary": "Comment List",
+        "operationId": "comment_list_picture__picture_id__comment_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Picture Id",
+              "type": "integer"
+            },
+            "name": "picture_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "comment"
+        ],
+        "summary": "Create Comment",
+        "operationId": "create_comment_picture__picture_id__comment_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/picture/{picture_id}/comment/{comment_id}": {
+      "get": {
+        "tags": [
+          "comment"
+        ],
+        "summary": "Comment List",
+        "operationId": "comment_list_picture__picture_id__comment__comment_id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Picture Id",
+              "type": "integer"
+            },
+            "name": "picture_id",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Comment Id",
+              "type": "integer"
+            },
+            "name": "comment_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "comment"
+        ],
+        "summary": "Comment Put",
+        "operationId": "comment_put_picture__picture_id__comment__comment_id__put",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Picture Id",
+              "type": "integer"
+            },
+            "name": "picture_id",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Comment Id",
+              "type": "integer"
+            },
+            "name": "comment_id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "comment"
+        ],
+        "summary": "Comment Delete",
+        "operationId": "comment_delete_picture__picture_id__comment__comment_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Picture Id",
+              "type": "integer"
+            },
+            "name": "picture_id",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Comment Id",
+              "type": "integer"
+            },
+            "name": "comment_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stat": {
+      "get": {
+        "tags": [
+          "stat"
+        ],
+        "summary": "Stats",
+        "operationId": "stats_stat_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Body_upload_or_update_file_picture__post": {
+        "title": "Body_upload_or_update_file_picture__post",
+        "required": [
+          "file"
+        ],
+        "type": "object",
+        "properties": {
+          "file": {
+            "title": "File",
+            "type": "string",
+            "format": "binary"
+          }
+        }
+      },
+      "CommentCreate": {
+        "title": "CommentCreate",
+        "required": [
+          "username",
+          "comment",
+          "picture_id"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "title": "Username",
+            "type": "string"
+          },
+          "comment": {
+            "title": "Comment",
+            "type": "string"
+          },
+          "picture_id": {
+            "title": "Picture Id",
+            "type": "integer"
+          }
+        }
+      },
+      "CommentUpdate": {
+        "title": "CommentUpdate",
+        "required": [
+          "username",
+          "comment"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "title": "Username",
+            "type": "string"
+          },
+          "comment": {
+            "title": "Comment",
+            "type": "string"
+          }
+        }
+      },
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
