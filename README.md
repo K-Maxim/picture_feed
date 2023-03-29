@@ -21,7 +21,7 @@ ____
 - unicorn main:app --reload
 ___
 
-### Документауия к API:
+### Документация к API:
 1. По ссылке:
 - #### https://app.swaggerhub.com/apis/MKARPENKO96/fast-api/0.3.0
 2. После запуска сервера локально:
