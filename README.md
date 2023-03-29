@@ -8,8 +8,8 @@ ____
  - Postgres
 ____
 ## Запуск проекта
-1. Клонирования приложение:
-- https://github.com/K-Maxim/picture_feed
+1. Клонирование:
+- https://github.com/K-Maxim/picture_feed.git
 2. Создать виртуальное окружение;
 3. Установить зависимости из requirements.txt:
 - pip install -r requirements.txt
