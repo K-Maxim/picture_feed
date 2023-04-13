@@ -1,10 +1,10 @@
 from fastapi import FastAPI, Depends
-from fastapi_users import fastapi_users, FastAPIUsers
+from fastapi_users import FastAPIUsers
 from starlette.requests import Request
 from starlette.responses import Response
 from src.core.db import SessionLocal
 from src.auth.auth import auth_backend
-from src.auth.database import User
+from src.auth.model import User
 from src.auth.manager import get_user_manager
 from src.auth.schemas import UserRead, UserCreate
 from src.routes import routes

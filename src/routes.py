@@ -1,7 +1,7 @@
 from fastapi import APIRouter
-from .comment import view as comment_view
-from .picture import view as picture_view
-from .stats import view as stats_view
+from src.comment import view as comment_view
+from src.picture import view as picture_view
+from src.stats import view as stats_view
 
 routes = APIRouter()
 
