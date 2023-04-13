@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from .model import Comment
+from src.comment.model import Comment
 from src.picture.model import Picture
 from .schemas import CommentCreate, CommentUpdate
 
